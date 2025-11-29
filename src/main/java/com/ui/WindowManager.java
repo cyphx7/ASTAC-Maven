@@ -28,8 +28,12 @@ public class WindowManager {
     private final StackPane rootStack;
     private final StackPane contentLayer;
     private JsonDataLoader dataLoader;
+
     private Chatbot currentChatbot;
     private Set<String> completedSubjects;
+    // NEW: Track used bots so they can be locked
+    private Set<String> usedBots;
+
     private int globalScore;
     private boolean isAskUsed = false;
     private boolean isCopyUsed = false;
@@ -43,7 +47,7 @@ public class WindowManager {
 
         this.rootStack = new StackPane();
         this.contentLayer = new StackPane();
-        
+
         this.rootStack.getChildren().addAll(contentLayer);
         this.rootStack.setStyle("-fx-background-color: black");
         this.mainScene = new Scene(rootStack, 1280, 720);
@@ -56,6 +60,10 @@ public class WindowManager {
         dataLoader = new JsonDataLoader();
         dataLoader.loadQuestionsFromDirectory("MCQ");
         soundManager.playBackgroundMusic("/res/theme.mp3");
+    }
+
+    public SoundManager getSoundManager() {
+        return soundManager;
     }
 
     private void setRoot(Parent content) {
@@ -99,6 +107,11 @@ public class WindowManager {
         setRoot(menu.getLayout());
     }
 
+    public void showSettings() {
+        playClickSound();
+        SettingsScreen screen = new SettingsScreen(this);
+        setRoot(screen.getLayout());
+    }
 
     public void showGuide() {
         playClickSound();
@@ -109,16 +122,19 @@ public class WindowManager {
     public void startNewGame() {
         playClickSound();
         completedSubjects = new HashSet<>();
+        usedBots = new HashSet<>(); // Reset used bots
         globalScore = 0;
         isAskUsed = false;
         isCopyUsed = false;
         isSaveUsed = false;
+
         showChatbotSelection();
     }
 
     public void showChatbotSelection() {
         playClickSound();
-        ChatbotSelection screen = new ChatbotSelection(this);
+        // Pass the list of used bots to the screen so it knows who to lock
+        ChatbotSelection screen = new ChatbotSelection(this, usedBots);
         setRoot(screen.getLayout());
     }
 
@@ -130,6 +146,7 @@ public class WindowManager {
 
     public void onChatbotSelected(Chatbot bot) {
         this.currentChatbot = bot;
+        // After picking a bot, go to subject selection
         showSubjectSelection();
     }
 
@@ -137,6 +154,7 @@ public class WindowManager {
         try {
             List<Question> roundQuestions = getQuestionsForSubject(subject);
 
+            // Dummy questions fallback if JSON is missing
             if (roundQuestions.isEmpty()) {
                 roundQuestions.add(new Question("Dummy Q1 (" + subject + ")", null, Arrays.asList("A","B","C","D"), 0, subject, Question.QuestionType.THEORETICAL));
                 roundQuestions.add(new Question("Dummy Q2 (" + subject + ")", null, Arrays.asList("A","B","C","D"), 0, subject, Question.QuestionType.THEORETICAL));
@@ -159,8 +177,14 @@ public class WindowManager {
         globalScore += score;
         completedSubjects.add(subject);
 
-        if (completedSubjects.size() >= 7) {
+        // --- KEY LOGIC CHANGE ---
+        // Mark the current bot as USED so they can't be picked again
+        if (currentChatbot != null) {
+            usedBots.add(currentChatbot.getName());
+        }
 
+        // Check if all 7 rounds are done (7 subjects = 7 bots used)
+        if (completedSubjects.size() >= 7) {
             int percent = (int) ((globalScore / 14.0) * 100);
 
             String msg = "Final Score: " + globalScore + "/14 (" + percent + "%)\n";
@@ -169,10 +193,10 @@ public class WindowManager {
 
             showCustomAlert("VICTORY", msg, this::showMainMenu);
         } else {
-            showSubjectSelection();
+            // IF GAME NOT OVER: Go back to Bot Selection to draft a new agent!
+            showChatbotSelection();
         }
     }
-
 
     public boolean isAskUsed() { return isAskUsed; }
     public void markAskUsed() { this.isAskUsed = true; }
@@ -190,17 +214,7 @@ public class WindowManager {
                 .collect(Collectors.toList());
     }
 
-    public void playClickSound() {
-        soundManager.playSFX("/res/click.wav"); 
-    }
-
-    public void playSuccessSound() {
-        soundManager.playSFX("/res/success.wav");
-    }
-
-    public void playErrorSound() {
-        soundManager.playSFX("/res/error.wav");
-    }
-
-    
+    public void playClickSound() { soundManager.playSFX("/res/click.wav"); }
+    public void playSuccessSound() { soundManager.playSFX("/res/success.wav"); }
+    public void playErrorSound() { soundManager.playSFX("/res/error.wav"); }
 }

@@ -1,6 +1,7 @@
 package com.ui;
 
 import java.util.Random;
+import java.util.Set;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -17,24 +19,30 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 import logic.Chatbot;
 
 /**
- * Screen for selecting an AI chatbot assistant with unique strengths and weaknesses.
+ * Screen for selecting an AI chatbot assistant.
+ * Bots that have already been used are stamped "OFFLINE".
  */
 public class ChatbotSelection {
     private final StackPane root;
     private final VBox contentLayout;
     private final WindowManager manager;
+    private final Set<String> usedBots;
 
-    public ChatbotSelection(WindowManager manager) {
+    public ChatbotSelection(WindowManager manager, Set<String> usedBots) {
         this.manager = manager;
+        this.usedBots = usedBots;
 
         root = new StackPane();
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: #000000");
 
+        // --- Background Flicker Effect ---
         Rectangle backlight = new Rectangle();
         backlight.setFill(Color.WHITE);
         backlight.setOpacity(0.2);
@@ -43,17 +51,16 @@ public class ChatbotSelection {
 
         Random rand = new Random();
         Timeline backgroundFlicker = new Timeline(
-            new KeyFrame(Duration.millis(50), e -> {
-                double chance = rand.nextDouble(); 
-
-                if (chance < 0.01) {
-                    backlight.setOpacity(0.4 + (rand.nextDouble() * 0.2)); 
-                } else if (chance < 0.05) {
-                    backlight.setOpacity(0.05); 
-                } else {
-                    backlight.setOpacity(0.2);
-                }
-            })
+                new KeyFrame(Duration.millis(50), e -> {
+                    double chance = rand.nextDouble();
+                    if (chance < 0.01) {
+                        backlight.setOpacity(0.4 + (rand.nextDouble() * 0.2));
+                    } else if (chance < 0.05) {
+                        backlight.setOpacity(0.05);
+                    } else {
+                        backlight.setOpacity(0.2);
+                    }
+                })
         );
         backgroundFlicker.setCycleCount(Timeline.INDEFINITE);
         backgroundFlicker.play();
@@ -68,9 +75,11 @@ public class ChatbotSelection {
         bgView.setManaged(false);
         bgView.fitWidthProperty().bind(root.widthProperty());
         bgView.fitHeightProperty().bind(root.heightProperty());
+
         Label title = new Label("CHOOSE YOUR ASSISTANT");
         title.setTextFill(Color.web(Theme.ACCENT_COLOR));
         title.setFont(Theme.FONT_HEADER);
+
 
         // Grid of Bots
         FlowPane botGrid = new FlowPane();
@@ -79,7 +88,6 @@ public class ChatbotSelection {
         botGrid.setVgap(20);
         botGrid.setPadding(new Insets(20));
 
-        // The 7 Chatbots
         String[] botNames = {"CHATGPT", "GEMINI", "GROK", "COPILOT", "CLAUDE", "DEEPSEEK", "PERPLEXITY"};
 
         for (String name : botNames) {
@@ -90,25 +98,26 @@ public class ChatbotSelection {
         root.getChildren().addAll(backlight, bgView, contentLayout);
     }
 
-
     private Pane createBotCard(String name) {
+        boolean isUsed = usedBots.contains(name);
+        String ACCENT_COLOR_HEX = Theme.ACCENT_COLOR; // Defined for cleaner code
+
         Image cardBgImage = new Image(getClass().getResourceAsStream("/res/card.png"));
         ImageView cardBgView = new ImageView(cardBgImage);
-
-
         cardBgView.setPreserveRatio(false);
         cardBgView.setSmooth(false);
-        cardBgView.setStyle(
-                "-fx-background-color: transparent; " + 
-                "-fx-padding: 0; " + 
-                "-fx-background-radius: 0;"               
-            );
+
+        // Darken the card background image for readability
+        ColorAdjust darkenCard = new ColorAdjust();
+        darkenCard.setBrightness(-0.6);
+        cardBgView.setEffect(darkenCard);
+
 
         VBox contentBox = new VBox(10);
         contentBox.setAlignment(Pos.CENTER);
-
         contentBox.setPadding(new Insets(25));
 
+        // Avatar
         Image chatbotAtlas = new Image(getClass().getResourceAsStream("/res/chatbots.png"));
         ImageView avatar = new ImageView(chatbotAtlas);
         int spriteIndex = getSpriteIndex(name);
@@ -119,29 +128,56 @@ public class ChatbotSelection {
         avatar.setFitHeight(80);
         avatar.setPreserveRatio(true);
         avatar.setSmooth(false);
-        avatar.setStyle(
-                "-fx-background-color: transparent; " + 
-                "-fx-padding: 0; " + 
-                "-fx-background-radius: 0;"               
-            );
+
+        // If used, darken the avatar further and desaturate
+        if (isUsed) {
+            ColorAdjust dim = new ColorAdjust();
+            dim.setBrightness(-0.6);
+            dim.setSaturation(-1.0);
+            avatar.setEffect(dim);
+        }
 
         Label nameLabel = new Label(name);
-        nameLabel.setTextFill(Color.WHITE);
-        nameLabel.setFont(Theme.FONT_NORMAL);
+        nameLabel.setTextFill(isUsed ? Color.GRAY : Color.WHITE);
+        nameLabel.setFont(Theme.FONT_NORMAL);;
 
         String[] stats = assignStats(name);
 
-        Button btnSelect = Theme.createStyledButton("SELECT");
-        btnSelect.setOnAction(e -> {
-            Chatbot selectedBot = new Chatbot(name, stats[0], stats[1]);
-            manager.onChatbotSelected(selectedBot);
-        });
+        Button btnSelect = Theme.createStyledButton(isUsed ? "LOCKED" : "SELECT");
+
+        if (isUsed) {
+            btnSelect.setDisable(true);
+            btnSelect.setStyle("-fx-background-color: #222; -fx-text-fill: #666; -fx-border-color: #444;");
+        } else {
+            btnSelect.setOnAction(e -> {
+                Chatbot selectedBot = new Chatbot(name, stats[0], stats[1]);
+                manager.onChatbotSelected(selectedBot);
+            });
+        }
 
         contentBox.getChildren().addAll(avatar, nameLabel, btnSelect);
 
         StackPane finalCardStack = new StackPane();
-
         finalCardStack.getChildren().addAll(cardBgView, contentBox);
+
+        // --- THE OFFLINE STAMP (NOW CYAN/BLUE) ---
+        if (isUsed) {
+            Label offlineStamp = new Label("OFFLINE");
+            offlineStamp.setFont(Font.font("Stencil", FontWeight.BOLD, 28));
+            offlineStamp.setTextFill(Color.web(ACCENT_COLOR_HEX)); // Use Accent Color
+            offlineStamp.setStyle(
+                    "-fx-border-color: " + ACCENT_COLOR_HEX + "; " + // Use Accent Color for Border
+                            "-fx-border-width: 4px; " +
+                            "-fx-padding: 5px 15px; " +
+                            "-fx-background-color: rgba(0,0,0, 0.8);" +
+                            "-fx-effect: dropshadow(gaussian, " + ACCENT_COLOR_HEX + ", 10, 0.5, 0, 0);" // Use Accent Color for Glow
+            );
+            offlineStamp.setRotate(-25);
+            offlineStamp.setMouseTransparent(true);
+
+            finalCardStack.getChildren().add(offlineStamp);
+        }
+
         cardBgView.fitWidthProperty().bind(finalCardStack.widthProperty());
         cardBgView.fitHeightProperty().bind(finalCardStack.heightProperty());
 

@@ -37,6 +37,10 @@ public class MainMenu {
 
         btnPlay.setOnAction(e -> manager.startNewGame());
         btnGuide.setOnAction(e -> manager.showGuide());
+
+        // --- UPDATED ACTION FOR SETTINGS ---
+        btnSettings.setOnAction(e -> manager.showSettings());
+
         btnExit.setOnAction(e -> System.exit(0));
 
         HBox buttonRow = new HBox(20);
@@ -57,29 +61,29 @@ public class MainMenu {
     }
 
     private Button createSpriteButton(String text) {
-    Button btn = new Button(text);
+        Button btn = new Button(text);
 
-    Image img = new Image(getClass().getResourceAsStream("/res/mainbutton.png"));
-    ImageView view = new ImageView(img);
+        Image img = new Image(getClass().getResourceAsStream("/res/mainbutton.png"));
+        ImageView view = new ImageView(img);
 
-    view.setFitWidth(128);
-    view.setFitHeight(64);
-    view.setSmooth(false);
+        view.setFitWidth(128);
+        view.setFitHeight(64);
+        view.setSmooth(false);
 
-    btn.setGraphic(view);
+        btn.setGraphic(view);
 
-    btn.setContentDisplay(ContentDisplay.CENTER);
+        btn.setContentDisplay(ContentDisplay.CENTER);
 
-    btn.setStyle(
-        "-fx-background-color: transparent; " +
-        "-fx-padding: 0; " +
-        "-fx-background-radius: 0; " +          
-        "-fx-border-width: 0;"
-    );
+        btn.setStyle(
+                "-fx-background-color: transparent; " +
+                        "-fx-padding: 0; " +
+                        "-fx-background-radius: 0; " +
+                        "-fx-border-width: 0;"
+        );
 
-    btn.setTextFill(Color.WHITE); 
-    btn.setFont(Theme.FONT_NORMAL);
+        btn.setTextFill(Color.WHITE);
+        btn.setFont(Theme.FONT_NORMAL);
 
-    return btn;
+        return btn;
     }
 }

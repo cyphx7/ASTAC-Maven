@@ -1,0 +1,18 @@
+/* Neon Slider Style */
+.neon-slider .track {
+    -fx-background-color: #333333; /* Dark grey track */
+    -fx-background-radius: 5px;
+    -fx-pref-height: 10px;
+}
+
+.neon-slider .thumb {
+    -fx-background-color: #00ffcc; /* Neon Cyan (Matches your Theme.ACCENT_COLOR usually) */
+    -fx-effect: dropshadow(gaussian, #00ffcc, 15, 0.6, 0, 0); /* The Glow Effect */
+    -fx-background-radius: 50%;
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+}
+
+.neon-slider .track-background {
+    -fx-background-color: #222;
+}
