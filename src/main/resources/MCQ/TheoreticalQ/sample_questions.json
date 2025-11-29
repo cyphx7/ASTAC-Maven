@@ -1,0 +1,28 @@
+[
+  {
+    "text": "Which symbol is used for single line comments in Java?",
+    "codeSnippet": null,
+    "options": [
+      "//",
+      "/*",
+      "#",
+      "--"
+    ],
+    "correctAnswerIndex": 0,
+    "subject": "Syntax",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is the output of the following code?",
+    "codeSnippet": "int x = 5;\nSystem.out.println(x++);",
+    "options": [
+      "5",
+      "6",
+      "Error",
+      "None of the above"
+    ],
+    "correctAnswerIndex": 0,
+    "subject": "Operators",
+    "type": "PROGRAMMING"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "text": "What is the fundamental, active unit in OOP?",
+    "options": ["The procedure", "The function", "The object", "The class"],
+    "correctAnswerIndex": 2,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a 'class' in OOP?",
+    "options": ["An instance of an object.", "A blueprint or template used to create objects.", "A global function.", "A data type, like int or float."],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The principle of bundling data (attributes) and the methods (behavior) into a single unit is called:",
+    "options": ["Inheritance", "Polymorphism", "Encapsulation", "Abstraction"],
+    "correctAnswerIndex": 2,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The practice of hiding an object’s internal state is a form of:",
+    "options": ["Inheritance", "Encapsulation (data hiding)", "Recursion", "Composition"],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is 'inheritance'?",
+    "options": ["One object accessing private data of another.", "A mechanism where a new class (subclass) derives properties from an existing class.", "A way to create multiple instances.", "A way to bundle data and methods."],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The ability of an object or method to take on many forms is known as:",
+    "options": ["Polymorphism", "Abstraction", "Encapsulation", "Inheritance"],
+    "correctAnswerIndex": 0,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "If a Dog class and a Cat class both inherit from Animal and both implement a makeSound() method, this is an example of:",
+    "options": ["Abstraction", "Polymorphism (specifically, overriding)", "Encapsulation", "A syntax error"],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The OOP principle of hiding complex implementation details and exposing only the essential features is called:",
+    "options": ["Abstraction", "Inheritance", "Polymorphism", "State"],
+    "correctAnswerIndex": 0,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a 'constructor'?",
+    "options": ["A method that destroys an object.", "A special method called automatically when a new object is created.", "A regular method that returns a value.", "A global function for building objects."],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "OOP is a paradigm that attempts to model computation as:",
+    "options": ["A series of mathematical functions.", "A set of real-world entities (objects) that interact by sending messages.", "A top-down sequence of instructions.", "A set of logical declarations."],
+    "correctAnswerIndex": 1,
+    "subject": "OOP",
+    "type": "THEORETICAL"
+  }
+]

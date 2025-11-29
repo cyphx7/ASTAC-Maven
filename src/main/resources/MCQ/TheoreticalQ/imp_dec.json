@@ -1,0 +1,72 @@
+[
+  {
+    "text": "The imperative paradigm focuses on:",
+    "options": ["WHAT the desired result is.", "HOW to execute a task, describing the step-by-step control flow.", "The mathematical relationship between inputs and outputs.", "Responding to user events."],
+    "correctAnswerIndex": 1,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The declarative paradigm focuses on:",
+    "options": ["WHAT the desired result is, without explicitly stating the flow.", "HOW to mutate variables.", "The order of operations.", "The use of objects."],
+    "correctAnswerIndex": 0,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which is an imperative approach to finding even numbers?",
+    "options": ["return filter(L, is_even)", "SELECT * FROM L WHERE val % 2 == 0", "Loop through L, check if n % 2 == 0, append to new list.", "even_numbers(L)"],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which is a declarative approach to finding even numbers?",
+    "options": ["Loop through list and append if even.", "return L.filter(n -> n % 2 == 0)", "while (i < L.length) ...", "goto check_even"],
+    "correctAnswerIndex": 1,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The SQL query 'SELECT name FROM users WHERE age > 18' is an example of:",
+    "options": ["Imperative programming", "Procedural programming", "Declarative programming", "Object-Oriented programming"],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Procedural programming is a type of:",
+    "options": ["Declarative paradigm", "Functional paradigm", "Imperative paradigm", "Event-Driven paradigm"],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Functional programming is a type of:",
+    "options": ["Declarative paradigm", "Imperative paradigm", "Procedural paradigm", "OOP"],
+    "correctAnswerIndex": 0,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "HTML (HyperText Markup Language) is considered:",
+    "options": ["Imperative", "Declarative", "Procedural", "Object-Oriented"],
+    "correctAnswerIndex": 1,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A key benefit of the declarative paradigm is that code is often:",
+    "options": ["Faster to execute.", "More concise, readable, and easier to reason about.", "More explicit about resource management.", "Closer to the machine hardware."],
+    "correctAnswerIndex": 1,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A key benefit of the imperative paradigm is:",
+    "options": ["Less control over flow.", "No ability to manage memory.", "Explicit control over execution and state, allowing optimization.", "Guaranteed bug-free."],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "THEORETICAL"
+  }
+]

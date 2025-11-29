@@ -1,0 +1,72 @@
+[
+  {
+    "text": "What is a 'programming paradigm'?",
+    "options": ["A specific programming language, like Java or C.", "A set of rules for debugging code.", "A fundamental style or way of thinking about how to build software.", "A software library for user interfaces."],
+    "correctAnswerIndex": 2,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A language that supports multiple programming paradigms (e.g., Python, C++) is called:",
+    "options": ["A multi-threaded language", "A multi-paradigm language", "A compiled language", "A high-level language"],
+    "correctAnswerIndex": 1,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The set of rules defining the valid structure and symbols of a language is its:",
+    "options": ["Paradigm", "Semantics", "Syntax", "Algorithm"],
+    "correctAnswerIndex": 2,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "The *meaning* of a syntactically correct piece of code is referred to as its:",
+    "options": ["Semantics", "Paradigm", "Type system", "Control flow"],
+    "correctAnswerIndex": 0,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Why do different programming paradigms exist?",
+    "options": ["Because older paradigms are obsolete.", "To make programming more difficult.", "Because different paradigms are better suited for solving different types of problems.", "Because computer hardware has changed."],
+    "correctAnswerIndex": 2,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which paradigm does the C language primarily follow?",
+    "options": ["Object-Oriented", "Functional", "Procedural", "Event-Driven"],
+    "correctAnswerIndex": 2,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which paradigm does the Java language primarily follow?",
+    "options": ["Object-Oriented", "Procedural", "Functional", "Declarative"],
+    "correctAnswerIndex": 0,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "SQL (Structured Query Language) is a classic example of which paradigm?",
+    "options": ["Imperative", "Declarative", "Procedural", "Object-Oriented"],
+    "correctAnswerIndex": 1,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which paradigm is modeled on the concept of mathematical functions?",
+    "options": ["Procedural", "Object-Oriented", "Functional", "Imperative"],
+    "correctAnswerIndex": 2,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A paradigm defines a program's structure, its building blocks, and:",
+    "options": ["The specific company that created it.", "The methods of computation and data organization.", "The exact speed at which the code will run.", "The type of computer it can run on."],
+    "correctAnswerIndex": 1,
+    "subject": "INTRO",
+    "type": "THEORETICAL"
+  }
+]

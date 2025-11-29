@@ -1,0 +1,72 @@
+[
+  {
+    "text": "What is the fundamental building block of a procedural program?",
+    "options": ["An object", "A procedure (or function/subroutine)", "An event", "A class"],
+    "correctAnswerIndex": 1,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is a problem typically solved in the procedural paradigm?",
+    "options": ["By modeling real-world objects.", "By defining a sequence of steps or procedure calls to follow.", "By responding to user-initiated events.", "By defining the logical result without specifying the steps."],
+    "correctAnswerIndex": 1,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Procedural programming is a sub-paradigm of which broader paradigm?",
+    "options": ["Declarative", "Functional", "Object-Oriented", "Imperative"],
+    "correctAnswerIndex": 3,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a 'top-down design' in the context of procedural programming?",
+    "options": ["Starting with the user interface and working backward.", "Breaking a large problem into smaller procedures, then breaking those procedures into even smaller ones.", "Writing all the code in a single, long file from top to bottom.", "Designing the data structures before writing any functions."],
+    "correctAnswerIndex": 1,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is data (state) typically handled in procedural programming?",
+    "options": ["It is strictly encapsulated within objects.", "It is often stored in shared or global variables, or passed as parameters between procedures.", "It is immutable and cannot be changed.", "It is only stored in databases."],
+    "correctAnswerIndex": 1,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which language is considered the classic example of procedural programming?",
+    "options": ["Java", "Haskell", "C", "Smalltalk"],
+    "correctAnswerIndex": 2,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a primary criticism of procedural programming for very large, complex systems?",
+    "options": ["It is too slow.", "It makes code easy to reuse.", "The separation of data and the functions that operate on it can make state management difficult.", "It relies too much on mathematical principles."],
+    "correctAnswerIndex": 2,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a 'procedure call'?",
+    "options": ["A variable that stores a value.", "A data structure that holds other data.", "An instruction that executes a specific, named block of code.", "A type of error."],
+    "correctAnswerIndex": 2,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which control structures are central to procedural programming?",
+    "options": ["Sequence, selection (if/switch), and iteration (loops).", "Inheritance and polymorphism.", "Event listeners and callbacks.", "Higher-order functions and recursion."],
+    "correctAnswerIndex": 0,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "In procedural programming, how is program state typically changed?",
+    "options": ["By creating a new copy of the state.", "By sending a message to an object.", "By direct assignment, modifying the value of a variable.", "State is not allowed to change."],
+    "correctAnswerIndex": 2,
+    "subject": "PROCEDURAL",
+    "type": "THEORETICAL"
+  }
+]

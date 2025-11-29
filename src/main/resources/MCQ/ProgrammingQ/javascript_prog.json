@@ -1,0 +1,78 @@
+[
+  {
+    "text": "What is the output of the following JavaScript code?",
+    "codeSnippet": "console.log('5' + 5);",
+    "options": ["10", "55 (as a number)", "'55' (as a string)", "(Error)"],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "What is the output of the following scoping code?",
+    "codeSnippet": "let x = 10;\nif (true) {\n    let x = 20;\n    console.log(x);\n}\nconsole.log(x);",
+    "options": ["20 (new line) 10", "20 (new line) 20", "10 (new line) 10", "10 (new line) 20"],
+    "correctAnswerIndex": 0,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "How do you define a 'fat arrow' function that adds two numbers?",
+    "options": ["const add = (a, b) => { a + b };", "const add = (a, b) => a + b;", "const add = function(a, b) => a + b;", "const add = (a + b);"],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "We want to select an HTML element that has the ID main-title.",
+    "options": ["let title = document.querySelector(\"#main-title\");", "let title = document.getElementById(\"main-title\");", "let title = document.getElementsByClassName(\"main-title\");", "A and B are both correct."],
+    "correctAnswerIndex": 3,
+    "subject": "EVENT_DRIVEN",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "Which snippet doubles every number in an array?",
+    "options": ["let doubled = nums.map(n => n * 2);", "let doubled = nums.filter(n => n * 2);", "let doubled = nums.forEach(n => n * 2);", "let doubled = nums.reduce(n => n * 2);"],
+    "correctAnswerIndex": 0,
+    "subject": "FUNCTIONAL",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "We want to define an object literal representing a user named Ben.",
+    "options": ["const user = { \"name\": \"Ben\" };", "const user = { name: \"Ben\" };", "const user = new Object(\"name\", \"Ben\");", "A and B are both correct."],
+    "correctAnswerIndex": 3,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "Fill in the blank to attach a click event listener.",
+    "codeSnippet": "const btn = document.getElementById(\"btn\");\nbtn.____(\"click\", () => { ... });",
+    "options": ["onClick", "on", "addEventListener", "attachEvent"],
+    "correctAnswerIndex": 2,
+    "subject": "EVENT_DRIVEN",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "Fill in the blank to check for strict equality (value and type).",
+    "codeSnippet": "let x = 5;\nif (x ____ 5) { ... }",
+    "options": ["==", "===", "is", "equals"],
+    "correctAnswerIndex": 1,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "Fill in the blank to define a named function.",
+    "codeSnippet": "____ calculate(a, b) {\n    return a + b;\n}",
+    "options": ["def", "const", "function", "void"],
+    "correctAnswerIndex": 2,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  },
+  {
+    "text": "Fill in the blank to find the length of an array.",
+    "codeSnippet": "const data = [10, 20, 30];\nconsole.log(data.____);",
+    "options": ["length()", "size()", "size", "length"],
+    "correctAnswerIndex": 3,
+    "subject": "IMP_DEC",
+    "type": "PROGRAMMING"
+  }
+]

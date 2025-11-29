@@ -1,0 +1,72 @@
+[
+  {
+    "text": "In Event-Driven Programming, the flow is primarily determined by:",
+    "options": ["A predefined sequence.", "External events, such as user actions.", "The creation of objects.", "Mathematical functions."],
+    "correctAnswerIndex": 1,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is an 'event handler'?",
+    "options": ["A loop waiting for an event.", "Hardware generating events.", "A callback function executed when a specific event occurs.", "A variable storing the event."],
+    "correctAnswerIndex": 2,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is the 'event loop'?",
+    "options": ["A for loop.", "A mechanism that waits for, queues, and dispatches events.", "A UI button.", "A syntax error."],
+    "correctAnswerIndex": 1,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "EDP is the dominant paradigm for which applications?",
+    "options": ["Command-line tools.", "GUIs and web servers.", "Math simulations.", "Compiler design."],
+    "correctAnswerIndex": 1,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What does 'asynchronous' mean in EDP?",
+    "options": ["Program does one thing at a time.", "Code executes randomly.", "Program does not wait for operation to complete; registers handler and continues.", "Code runs at specific time."],
+    "correctAnswerIndex": 2,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which language is most associated with client-side EDP?",
+    "options": ["C", "Java", "JavaScript", "Haskell"],
+    "correctAnswerIndex": 2,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A function passed as an argument to be called later is a:",
+    "options": ["Callback function", "Constructor", "Pure function", "Recursive function"],
+    "correctAnswerIndex": 0,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How does EDP control flow differ from procedural?",
+    "options": ["It is the same.", "Procedural is linear; EDP is dynamic based on events.", "EDP has no control flow.", "Procedural cannot use functions."],
+    "correctAnswerIndex": 1,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is the typical 'main state' of an event-driven app?",
+    "options": ["Calculating.", "Waiting in the event loop.", "Shutting down.", "Initializing."],
+    "correctAnswerIndex": 1,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "When you click a button and a menu appears, this is:",
+    "options": ["An onClick event triggering a handler.", "A procedural script.", "A bug.", "A declarative query."],
+    "correctAnswerIndex": 0,
+    "subject": "EVENT_DRIVEN",
+    "type": "THEORETICAL"
+  }
+]

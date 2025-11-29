@@ -1,0 +1,72 @@
+[
+  {
+    "text": "How is 'behavior' represented in Procedural programming?",
+    "options": ["Methods attached to objects.", "Standalone procedures or functions.", "Pure functions.", "Event listeners."],
+    "correctAnswerIndex": 1,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is 'behavior' represented in OOP?",
+    "options": ["Methods bound to objects.", "Global functions.", "Declarative rules.", "A main procedure."],
+    "correctAnswerIndex": 0,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is 'behavior' represented in Functional programming?",
+    "options": ["Methods mutating state.", "Pure functions transforming data.", "Objects sending messages.", "Imperative steps."],
+    "correctAnswerIndex": 1,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is 'state' managed in OOP?",
+    "options": ["Encapsulated as private attributes.", "Global variables.", "Avoided entirely.", "Passed between procedures."],
+    "correctAnswerIndex": 0,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is 'state' managed in pure Functional programming?",
+    "options": ["Encapsulated in objects.", "Global variables.", "Immutable; changes create new data.", "Event handlers."],
+    "correctAnswerIndex": 2,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How is 'state' managed in Procedural programming?",
+    "options": ["Immutable.", "Encapsulated.", "Mutable variables modified by procedures.", "Event loop."],
+    "correctAnswerIndex": 2,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is the Functional equivalent of an imperative loop?",
+    "options": ["Recursion or higher-order functions.", "Switch statement.", "If-else block.", "Object constructor."],
+    "correctAnswerIndex": 0,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How might FP achieve polymorphism?",
+    "options": ["Inheritance.", "Switch statement.", "Higher-order function accepting a strategy function.", "Global variables."],
+    "correctAnswerIndex": 2,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is the C equivalent to an OOP 'object'?",
+    "options": ["Global variable.", "A struct combined with functions.", "A single function.", "A macro."],
+    "correctAnswerIndex": 1,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "How does Event-Driven often map to OOP?",
+    "options": ["Events are functions.", "UI elements are objects.", "Event listeners are methods.", "B and C are correct."],
+    "correctAnswerIndex": 3,
+    "subject": "MAPPINGS",
+    "type": "THEORETICAL"
+  }
+]

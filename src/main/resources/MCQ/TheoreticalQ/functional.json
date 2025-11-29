@@ -1,0 +1,72 @@
+[
+  {
+    "text": "What is the core concept of functional programming?",
+    "options": ["Building programs by composing objects.", "Building programs as a sequence of imperative commands.", "Building programs by composing pure functions, avoiding shared state and mutable data.", "Building programs by responding to asynchronous events."],
+    "correctAnswerIndex": 2,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What does 'immutability' mean in the context of FP?",
+    "options": ["Functions cannot be changed.", "Once data (like a variable or object) is created, its state cannot be modified.", "The program cannot accept user input.", "The program’s source code cannot be edited."],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a 'pure function'?",
+    "options": ["A function that only uses local variables.", "A function that has no 'side effects' and always returns the same output for the same input.", "A function that is part of the language’s standard library.", "A function that has no parameters."],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which of the following is an example of a 'side effect'?",
+    "options": ["Calculating the sum of two numbers.", "Modifying a global variable.", "Returning a value.", "Taking a parameter."],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "In 'pure' FP, what concept is often used for iteration instead of traditional loops?",
+    "options": ["goto statements", "Recursion", "Procedure calls", "Global variables"],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "A function that either takes another function as an argument or returns a function is called:",
+    "options": ["A pure function", "A higher-order function", "An impure function", "A constructor"],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Functional programming is a sub-paradigm of which broader paradigm?",
+    "options": ["Imperative", "Procedural", "Object-Oriented", "Declarative"],
+    "correctAnswerIndex": 3,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "'Referential transparency' is a property of pure functions which means:",
+    "options": ["A function’s name must refer to its purpose.", "A function call can be replaced by its resulting value without changing the program’s behavior.", "A function must be written by a trusted source.", "A function must be visible to all other parts of the program."],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "What is a key benefit of immutability and pure functions?",
+    "options": ["Programs use less memory.", "Programs are easier to test, debug, and run in parallel (concurrency).", "Programs run faster on a single core.", "Programs require less code."],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  },
+  {
+    "text": "Which language is most strongly associated with 'pure' functional programming?",
+    "options": ["C", "Haskell", "Java", "JavaScript"],
+    "correctAnswerIndex": 1,
+    "subject": "FUNCTIONAL",
+    "type": "THEORETICAL"
+  }
+]
