@@ -31,13 +31,16 @@ public class WindowManager {
 
     private Chatbot currentChatbot;
     private Set<String> completedSubjects;
-    // NEW: Track used bots so they can be locked
     private Set<String> usedBots;
 
     private int globalScore;
     private boolean isAskUsed = false;
     private boolean isCopyUsed = false;
     private boolean isSaveUsed = false;
+
+    // NEW: Track if a game is currently running to allow "Continue"
+    private boolean gameActive = false;
+
     private SoundManager soundManager;
 
     public WindowManager(Stage stage) {
@@ -119,21 +122,49 @@ public class WindowManager {
         setRoot(screen.getLayout());
     }
 
+    /**
+     * Resets all stats and starts a fresh game.
+     */
     public void startNewGame() {
         playClickSound();
         completedSubjects = new HashSet<>();
-        usedBots = new HashSet<>(); // Reset used bots
+        usedBots = new HashSet<>();
         globalScore = 0;
         isAskUsed = false;
         isCopyUsed = false;
         isSaveUsed = false;
 
+        gameActive = true; // Mark game as active
+
         showChatbotSelection();
+    }
+
+    /**
+     * Resumes the current game without resetting stats.
+     */
+    public void continueGame() {
+        playClickSound();
+        if (completedSubjects == null) {
+            startNewGame(); // Fallback if something is wrong
+        } else {
+            showChatbotSelection();
+        }
+    }
+
+    /**
+     * Called when the game is lost or fully completed to reset the active state.
+     */
+    public void endGame() {
+        gameActive = false;
+        showMainMenu();
+    }
+
+    public boolean isGameActive() {
+        return gameActive;
     }
 
     public void showChatbotSelection() {
         playClickSound();
-        // Pass the list of used bots to the screen so it knows who to lock
         ChatbotSelection screen = new ChatbotSelection(this, usedBots);
         setRoot(screen.getLayout());
     }
@@ -146,7 +177,6 @@ public class WindowManager {
 
     public void onChatbotSelected(Chatbot bot) {
         this.currentChatbot = bot;
-        // After picking a bot, go to subject selection
         showSubjectSelection();
     }
 
@@ -154,7 +184,6 @@ public class WindowManager {
         try {
             List<Question> roundQuestions = getQuestionsForSubject(subject);
 
-            // Dummy questions fallback if JSON is missing
             if (roundQuestions.isEmpty()) {
                 roundQuestions.add(new Question("Dummy Q1 (" + subject + ")", null, Arrays.asList("A","B","C","D"), 0, subject, Question.QuestionType.THEORETICAL));
                 roundQuestions.add(new Question("Dummy Q2 (" + subject + ")", null, Arrays.asList("A","B","C","D"), 0, subject, Question.QuestionType.THEORETICAL));
@@ -177,13 +206,10 @@ public class WindowManager {
         globalScore += score;
         completedSubjects.add(subject);
 
-        // --- KEY LOGIC CHANGE ---
-        // Mark the current bot as USED so they can't be picked again
         if (currentChatbot != null) {
             usedBots.add(currentChatbot.getName());
         }
 
-        // Check if all 7 rounds are done (7 subjects = 7 bots used)
         if (completedSubjects.size() >= 7) {
             int percent = (int) ((globalScore / 14.0) * 100);
 
@@ -191,9 +217,10 @@ public class WindowManager {
             if (percent == 100) msg += "PERFECT SCORE! You are Smarter than a Chatbot!";
             else msg += "You survived, but are you smarter?";
 
+            // Game Completed - Reset Active Flag
+            gameActive = false;
             showCustomAlert("VICTORY", msg, this::showMainMenu);
         } else {
-            // IF GAME NOT OVER: Go back to Bot Selection to draft a new agent!
             showChatbotSelection();
         }
     }

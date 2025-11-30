@@ -30,17 +30,22 @@ public class MainMenu {
         titleView.setSmooth(false);
         titleView.setPreserveRatio(true);
 
-        Button btnPlay = createSpriteButton("PLAY GAME");
+        // --- NEW LOGIC: CONTINUE vs PLAY ---
+        Button btnPlay;
+        if (manager.isGameActive()) {
+            btnPlay = createSpriteButton("CONTINUE");
+            btnPlay.setOnAction(e -> manager.continueGame());
+        } else {
+            btnPlay = createSpriteButton("PLAY GAME");
+            btnPlay.setOnAction(e -> manager.startNewGame());
+        }
+
         Button btnGuide = createSpriteButton("GUIDE");
         Button btnSettings = createSpriteButton("SETTINGS");
         Button btnExit = createSpriteButton("EXIT");
 
-        btnPlay.setOnAction(e -> manager.startNewGame());
         btnGuide.setOnAction(e -> manager.showGuide());
-
-        // --- UPDATED ACTION FOR SETTINGS ---
         btnSettings.setOnAction(e -> manager.showSettings());
-
         btnExit.setOnAction(e -> System.exit(0));
 
         HBox buttonRow = new HBox(20);

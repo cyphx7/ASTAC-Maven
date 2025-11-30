@@ -95,29 +95,35 @@ public class ChatbotSelection {
             botGrid.getChildren().add(botCard);
         }
         contentLayout.getChildren().addAll(title, botGrid);
-        root.getChildren().addAll(backlight, bgView, contentLayout);
+
+        // --- NEW BACK BUTTON ---
+        Button btnBack = Theme.createStyledButton("BACK");
+        btnBack.setOnAction(e -> manager.showMainMenu());
+
+        // Align Top-Left
+        StackPane.setAlignment(btnBack, Pos.TOP_LEFT);
+        StackPane.setMargin(btnBack, new Insets(20));
+
+        root.getChildren().addAll(backlight, bgView, contentLayout, btnBack);
     }
 
     private Pane createBotCard(String name) {
         boolean isUsed = usedBots.contains(name);
-        String ACCENT_COLOR_HEX = Theme.ACCENT_COLOR; // Defined for cleaner code
+        String ACCENT_COLOR_HEX = Theme.ACCENT_COLOR;
 
         Image cardBgImage = new Image(getClass().getResourceAsStream("/res/card.png"));
         ImageView cardBgView = new ImageView(cardBgImage);
         cardBgView.setPreserveRatio(false);
         cardBgView.setSmooth(false);
 
-        // Darken the card background image for readability
         ColorAdjust darkenCard = new ColorAdjust();
         darkenCard.setBrightness(-0.6);
         cardBgView.setEffect(darkenCard);
-
 
         VBox contentBox = new VBox(10);
         contentBox.setAlignment(Pos.CENTER);
         contentBox.setPadding(new Insets(25));
 
-        // Avatar
         Image chatbotAtlas = new Image(getClass().getResourceAsStream("/res/chatbots.png"));
         ImageView avatar = new ImageView(chatbotAtlas);
         int spriteIndex = getSpriteIndex(name);
@@ -129,7 +135,6 @@ public class ChatbotSelection {
         avatar.setPreserveRatio(true);
         avatar.setSmooth(false);
 
-        // If used, darken the avatar further and desaturate
         if (isUsed) {
             ColorAdjust dim = new ColorAdjust();
             dim.setBrightness(-0.6);
@@ -143,11 +148,12 @@ public class ChatbotSelection {
 
         String[] stats = assignStats(name);
 
-        Button btnSelect = Theme.createStyledButton(isUsed ? "LOCKED" : "SELECT");
+        Button btnSelect = Theme.createStyledButton("SELECT");
 
         if (isUsed) {
             btnSelect.setDisable(true);
-            btnSelect.setStyle("-fx-background-color: #222; -fx-text-fill: #666; -fx-border-color: #444;");
+            btnSelect.setText("OFFLINE");
+            btnSelect.setStyle("-fx-background-color: #111; -fx-text-fill: #555; -fx-border-color: #555;");
         } else {
             btnSelect.setOnAction(e -> {
                 Chatbot selectedBot = new Chatbot(name, stats[0], stats[1]);
@@ -160,17 +166,16 @@ public class ChatbotSelection {
         StackPane finalCardStack = new StackPane();
         finalCardStack.getChildren().addAll(cardBgView, contentBox);
 
-        // --- THE OFFLINE STAMP (NOW CYAN/BLUE) ---
         if (isUsed) {
             Label offlineStamp = new Label("OFFLINE");
             offlineStamp.setFont(Font.font("Stencil", FontWeight.BOLD, 28));
-            offlineStamp.setTextFill(Color.web(ACCENT_COLOR_HEX)); // Use Accent Color
+            offlineStamp.setTextFill(Color.web(ACCENT_COLOR_HEX));
             offlineStamp.setStyle(
-                    "-fx-border-color: " + ACCENT_COLOR_HEX + "; " + // Use Accent Color for Border
+                    "-fx-border-color: " + ACCENT_COLOR_HEX + "; " +
                             "-fx-border-width: 4px; " +
                             "-fx-padding: 5px 15px; " +
                             "-fx-background-color: rgba(0,0,0, 0.8);" +
-                            "-fx-effect: dropshadow(gaussian, " + ACCENT_COLOR_HEX + ", 10, 0.5, 0, 0);" // Use Accent Color for Glow
+                            "-fx-effect: dropshadow(gaussian, " + ACCENT_COLOR_HEX + ", 10, 0.5, 0, 0);"
             );
             offlineStamp.setRotate(-25);
             offlineStamp.setMouseTransparent(true);

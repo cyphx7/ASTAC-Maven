@@ -86,8 +86,8 @@ public class GameController {
 
         String introMsg = bot.isRevealed()
                 ? String.format("Hey! I am good at %s but bad at %s.",
-                    bot.getStrengthSubject(),
-                    bot.getWeaknessSubject())
+                bot.getStrengthSubject(),
+                bot.getWeaknessSubject())
                 : "Waiting...";
         ui.getDialogLabel().setText(introMsg);
 
@@ -118,7 +118,8 @@ public class GameController {
             int percent = (int) ((totalScore / 14.0) * 100);
 
             String msg = "You were wrong!\nBot attempted to Save you, but FAILED.\n\nFinal Score: " + totalScore + "/14 (" + percent + "%)";
-            manager.showCustomAlert("GAME OVER", msg, manager::showMainMenu);
+            // CHANGED: Use endGame() to reset state
+            manager.showCustomAlert("GAME OVER", msg, manager::endGame);
         }
         else {
             manager.playErrorSound();
@@ -126,7 +127,8 @@ public class GameController {
             int percent = (int) ((totalScore / 14.0) * 100);
 
             String msg = "You threw an exception!\n\nFinal Score: " + totalScore + "/14 (" + percent + "%)";
-            manager.showCustomAlert("GAME OVER", msg, manager::showMainMenu);
+            // CHANGED: Use endGame() to reset state
+            manager.showCustomAlert("GAME OVER", msg, manager::endGame);
         }
     }
 
